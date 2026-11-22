@@ -1,0 +1,52 @@
+# Project configuration parameters for MP301 Hostel Mess Food Waste
+base:
+  project_id: "MP301"
+  group_id: "G151"
+  random_state: 42
+
+data:
+  raw_train_path: "data/raw/train.csv"
+  raw_later_path: "data/raw/later.csv"
+  raw_holdout_path: "data/raw/holdout_features.csv"
+  processed_train_path: "data/processed/train_cleaned.csv"
+  target_col: "waste_kg"
+  leaking_col: "waste_weighed_at_bin"
+  group_col: "hostel"
+  
+  # Cleaning rules from 7 data checks
+  unit_mixup:
+    col: "plate_size_cm"
+    group_value: "Boys Hostel 1"
+    factor: 10
+    threshold: 100.0
+    
+  sentinel_value:
+    col: "temp_c"
+    value: -999.0
+    strategy: "median"
+    
+  target_typos:
+    threshold: 100.0
+    factor: 10.0
+
+model:
+  target: "waste_kg"
+  features:
+    - "students_registered"
+    - "attendance_pct"
+    - "menu_rating"
+    - "temp_c"
+    - "cooked_kg"
+    - "plate_size_cm"
+    - "meal"
+    - "hostel"
+  categorical_features:
+    - "meal"
+    - "hostel"
+  numeric_features:
+    - "students_registered"
+    - "attendance_pct"
+    - "menu_rating"
+    - "temp_c"
+    - "cooked_kg"
+    - "plate_size_cm"
