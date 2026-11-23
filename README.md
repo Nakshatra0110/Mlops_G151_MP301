@@ -14,8 +14,8 @@
 | **S24CSEU2317** | **Nakshatra Gupta** | **Data Lead** | DVC setup, 7 data checks audit, cleaning pipeline, `findings.yaml` data section |
 | S24CSEU2230 | Gunjan Kandpal | Model Lead | Training, MLflow tracking and model registry, holdout prediction |
 | S24CSEU1197 | Kanan Singhal | Service Lead | FastAPI application, Pydantic schemas, validation rules, Dockerfile |
-| S24CSEU2006 | Riya Bhati | Ops Lead | CI/CD GitHub Actions, Kubernetes manifests, structured logging |
-| S24CSEU2297 | Aarna Verma | Member / Contributor | Drift monitoring (PSI), retraining evaluation, holdout validation |
+| S24CSEU2006 | Aarna Verma | Ops Lead | CI/CD GitHub Actions, Kubernetes manifests, structured logging |
+| S24CSEU2297 | Riya Bhati | Member / Contributor | Drift monitoring (PSI), retraining evaluation, holdout validation |
 
 ---
 
