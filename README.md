@@ -85,3 +85,42 @@ python -m src.mp301.cleaning
 ```bash
 pytest tests/
 ```
+
+---
+
+## Stage 2 — Training, MLflow and service (added)
+
+The stage-1 files above are untouched. The stage-2 additions live alongside them:
+
+```
+src/mp301/config_ml.py      # reads the existing params.yaml and adapts it for stage 2
+src/mp301/checks_ml.py      # seven checks with detailed evidence (viva demo)
+src/mp301/cleaning_ml.py    # deterministic cleaning driven by those checks
+src/mp301/model.py          # sklearn preprocessing + regressor factory
+src/mp301/train.py          # 3 experiments + v1 champion registration
+app/main.py                 # FastAPI /predict and /health
+tests/test_stage2_ml.py     # 6 data/cleaning tests
+tests/test_api.py           # 5 TestClient tests, including both 422 rules
+mlflow.db                   # committed tracking store (4 runs)
+models/model.joblib         # v1 champion used by the API
+reports/stage2_summary.json # exact run ids and metrics
+reports/stage2_details.yaml # detailed evidence for every data finding
+Dockerfile, .dockerignore, .github/workflows/ci.yml, k8s/
+```
+
+### Already-generated results
+
+- `data_sha256`: `3485c8e6f60956e7a6f46807cd821f1d79bbb89e47749dfd10a6d8147ffaa01c`
+- 3 candidate runs + 1 champion run in `mlflow.db`
+- Best v1 = `ridge`, validation MAE `2.2523`, later MAE `8.9024`
+- Registered model `mp301_waste_model`, version **1**, alias **`champion`**
+- Champion run id: `cd10f7758bf94aa79675d648cf50550b`
+- `pytest -q` → **21 passed**
+
+**Do not rerun `python -m src.mp301.train --fresh`** unless you intentionally want new run ids; the database and `findings.yaml` are already filled.
+
+To inspect the service locally:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```

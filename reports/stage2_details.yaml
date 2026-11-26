@@ -1,0 +1,113 @@
+data_sha256: 3485c8e6f60956e7a6f46807cd821f1d79bbb89e47749dfd10a6d8147ffaa01c
+checks:
+  leaking_column:
+    present: true
+    column: waste_weighed_at_bin
+    details:
+      column: waste_weighed_at_bin
+      absent_from_holdout: true
+      corr_with_target: 0.998686
+      mae_vs_target_kg: 0.4793
+      relative_mae: 0.01368
+    all_candidates:
+    - column: waste_weighed_at_bin
+      absent_from_holdout: true
+      corr_with_target: 0.998686
+      mae_vs_target_kg: 0.4793
+      relative_mae: 0.01368
+  unit_mixup:
+    present: true
+    column: plate_size_cm
+    group_column: hostel
+    group: Boys Hostel 1
+    factor: 10
+    direction: divide
+    details:
+      column: plate_size_cm
+      group_column: hostel
+      group: Boys Hostel 1
+      factor: 10
+      direction: divide
+      observed_median: 269.0
+      peer_median: 27.4
+      corrected_median: 26.9
+      relative_error: 0.013276
+  sentinel_value:
+    present: true
+    count_of_affected_cells: 58
+    details:
+    - column: temp_c
+      value: -999
+      count: 58
+      share: 0.058
+  duplicate_rows:
+    present: false
+    extra_copies: 0
+    rows_after_drop: 1000
+  stuck_sensor:
+    present: false
+    details: {}
+  target_typos:
+    present: true
+    factor: 10
+    count: 12
+    gap_ratio: 3.4604
+    smallest_typo: 236.0
+    largest_typo: 587.0
+    threshold_kg: 68.2
+    details:
+      values:
+      - 236.0
+      - 253.0
+      - 293.0
+      - 302.0
+      - 313.0
+      - 390.0
+      - 445.0
+      - 450.0
+      - 513.0
+      - 515.0
+      - 550.0
+      - 587.0
+  spelling_variants:
+    present: false
+    column: null
+    true_levels: null
+    details: {}
+    all_text_columns: []
+summary:
+  experiment: mp301-G151-v1
+  data_sha256: 3485c8e6f60956e7a6f46807cd821f1d79bbb89e47749dfd10a6d8147ffaa01c
+  candidate_run_ids:
+  - 8ad69f6b351a429bb49712daa6677575
+  - 30f2537679b243fda7fdb359f83fa787
+  - de02f08421d24bd5983bc0a1c57f8e0c
+  candidates:
+  - name: ridge
+    run_id: 8ad69f6b351a429bb49712daa6677575
+    mae_val: 2.252291573344854
+    mae_later: 9.00888591805347
+  - name: random_forest
+    run_id: 30f2537679b243fda7fdb359f83fa787
+    mae_val: 2.8494216617520856
+    mae_later: 13.99344487494181
+  - name: hist_gb
+    run_id: de02f08421d24bd5983bc0a1c57f8e0c
+    mae_val: 2.3689786416812324
+    mae_later: 13.182447368589978
+  champion_run_id: cd10f7758bf94aa79675d648cf50550b
+  champion_version: 1
+  best_candidate: ridge
+  best_mae_validation: 2.252291573344854
+  best_mae_later: 8.902441671717202
+  rows_used: 1000
+  raw_rows: 1000
+  features:
+  - students_registered
+  - attendance_pct
+  - menu_rating
+  - temp_c
+  - cooked_kg
+  - plate_size_cm
+  - meal
+  - hostel

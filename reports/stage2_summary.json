@@ -1,0 +1,46 @@
+{
+  "experiment": "mp301-G151-v1",
+  "data_sha256": "3485c8e6f60956e7a6f46807cd821f1d79bbb89e47749dfd10a6d8147ffaa01c",
+  "candidate_run_ids": [
+    "8ad69f6b351a429bb49712daa6677575",
+    "30f2537679b243fda7fdb359f83fa787",
+    "de02f08421d24bd5983bc0a1c57f8e0c"
+  ],
+  "candidates": [
+    {
+      "name": "ridge",
+      "run_id": "8ad69f6b351a429bb49712daa6677575",
+      "mae_val": 2.252291573344854,
+      "mae_later": 9.00888591805347
+    },
+    {
+      "name": "random_forest",
+      "run_id": "30f2537679b243fda7fdb359f83fa787",
+      "mae_val": 2.8494216617520856,
+      "mae_later": 13.99344487494181
+    },
+    {
+      "name": "hist_gb",
+      "run_id": "de02f08421d24bd5983bc0a1c57f8e0c",
+      "mae_val": 2.3689786416812324,
+      "mae_later": 13.182447368589978
+    }
+  ],
+  "champion_run_id": "cd10f7758bf94aa79675d648cf50550b",
+  "champion_version": 1,
+  "best_candidate": "ridge",
+  "best_mae_validation": 2.252291573344854,
+  "best_mae_later": 8.902441671717202,
+  "rows_used": 1000,
+  "raw_rows": 1000,
+  "features": [
+    "students_registered",
+    "attendance_pct",
+    "menu_rating",
+    "temp_c",
+    "cooked_kg",
+    "plate_size_cm",
+    "meal",
+    "hostel"
+  ]
+}
